@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+get("/", { :controller => "households", :action => "index" })
 
   # Routes for the Clothe resource:
 
