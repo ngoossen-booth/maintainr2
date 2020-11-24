@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Equipment #<%= @the_equipment.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/equipment">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_equipment/<%= @the_equipment.id %>">
+          Delete equipment
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Home
+      </dt>
+      <dd>
+        <%= @the_equipment.home_id %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_equipment.description %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_equipment.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_equipment.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit equipment
+    </h2>
+
+    <form action="/modify_equipment/<%= @the_equipment.id %>"  method="post" >
+      <div>
+        <label for="home_id_box">
+          Home
+        </label>
+
+        <input type="text" id="home_id_box" name="query_home_id" value="<%= @the_equipment.home_id %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description"><%= @the_equipment.description %></textarea>
+      </div>
+
+      <button>
+        Update equipment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

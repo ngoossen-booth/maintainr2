@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Household #<%= @the_household.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/households">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_household/<%= @the_household.id %>">
+          Delete household
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Owner
+      </dt>
+      <dd>
+        <%= @the_household.owner_id %>
+      </dd>
+
+      <dt>
+        Picture
+      </dt>
+      <dd>
+        <%= @the_household.picture %>
+      </dd>
+
+      <dt>
+        Nickname
+      </dt>
+      <dd>
+        <%= @the_household.nickname %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_household.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_household.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit household
+    </h2>
+
+    <form action="/modify_household/<%= @the_household.id %>"  method="post" >
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_household.owner_id %>">
+      </div>
+
+      <div>
+        <label for="picture_box">
+          Picture
+        </label>
+
+        <input type="text" id="picture_box" name="query_picture" value="<%= @the_household.picture %>">
+      </div>
+
+      <div>
+        <label for="nickname_box">
+          Nickname
+        </label>
+
+        <input type="text" id="nickname_box" name="query_nickname" value="<%= @the_household.nickname %>">
+      </div>
+
+      <button>
+        Update household
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

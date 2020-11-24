@@ -2,6 +2,82 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Clothe resource:
+
+  # CREATE
+  post("/insert_clothe", { :controller => "clothes", :action => "create" })
+          
+  # READ
+  get("/clothes", { :controller => "clothes", :action => "index" })
+  
+  get("/clothes/:path_id", { :controller => "clothes", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_clothe/:path_id", { :controller => "clothes", :action => "update" })
+  
+  # DELETE
+  get("/delete_clothe/:path_id", { :controller => "clothes", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Household resource:
+
+  # CREATE
+  post("/insert_household", { :controller => "households", :action => "create" })
+          
+  # READ
+  get("/households", { :controller => "households", :action => "index" })
+  
+  get("/households/:path_id", { :controller => "households", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_household/:path_id", { :controller => "households", :action => "update" })
+  
+  # DELETE
+  get("/delete_household/:path_id", { :controller => "households", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Component resource:
+
+  # CREATE
+  post("/insert_component", { :controller => "components", :action => "create" })
+          
+  # READ
+  get("/components", { :controller => "components", :action => "index" })
+  
+  get("/components/:path_id", { :controller => "components", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_component/:path_id", { :controller => "components", :action => "update" })
+  
+  # DELETE
+  get("/delete_component/:path_id", { :controller => "components", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Equipment resource:
+
+  # CREATE
+  post("/insert_equipment", { :controller => "equipment", :action => "create" })
+          
+  # READ
+  get("/equipment", { :controller => "equipment", :action => "index" })
+  
+  get("/equipment/:path_id", { :controller => "equipment", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_equipment/:path_id", { :controller => "equipment", :action => "update" })
+  
+  # DELETE
+  get("/delete_equipment/:path_id", { :controller => "equipment", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the User account:
 
   # SIGN UP FORM

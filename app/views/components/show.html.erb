@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      Component #<%= @the_component.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/components">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_component/<%= @the_component.id %>">
+          Delete component
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Equipment
+      </dt>
+      <dd>
+        <%= @the_component.equipment_id %>
+      </dd>
+
+      <dt>
+        Last service date
+      </dt>
+      <dd>
+        <%= @the_component.last_service_date %>
+      </dd>
+
+      <dt>
+        Next service date
+      </dt>
+      <dd>
+        <%= @the_component.next_service_date %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_component.description %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_component.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_component.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit component
+    </h2>
+
+    <form action="/modify_component/<%= @the_component.id %>"  method="post" >
+      <div>
+        <label for="equipment_id_box">
+          Equipment
+        </label>
+
+        <input type="text" id="equipment_id_box" name="query_equipment_id" value="<%= @the_component.equipment_id %>">
+      </div>
+
+      <div>
+        <label for="last_service_date_box">
+          Last service date
+        </label>
+
+        <input type="datetime-local" id="last_service_date_box" name="query_last_service_date"
+         value="<%= @the_component.last_service_date %>">
+      </div>
+
+      <div>
+        <label for="next_service_date_box">
+          Next service date
+        </label>
+
+        <input type="datetime-local" id="next_service_date_box" name="query_next_service_date"
+         value="<%= @the_component.next_service_date %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_component.description %>">
+      </div>
+
+      <button>
+        Update component
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

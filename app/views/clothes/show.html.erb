@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Clothe #<%= @the_clothe.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/clothes">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_clothe/<%= @the_clothe.id %>">
+          Delete clothe
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_clothe.description %>
+      </dd>
+
+      <dt>
+        Home
+      </dt>
+      <dd>
+        <%= @the_clothe.home_id %>
+      </dd>
+
+      <dt>
+        Quantity
+      </dt>
+      <dd>
+        <%= @the_clothe.quantity %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_clothe.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_clothe.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit clothe
+    </h2>
+
+    <form action="/modify_clothe/<%= @the_clothe.id %>"  method="post" >
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description"><%= @the_clothe.description %></textarea>
+      </div>
+
+      <div>
+        <label for="home_id_box">
+          Home
+        </label>
+
+        <input type="text" id="home_id_box" name="query_home_id" value="<%= @the_clothe.home_id %>">
+      </div>
+
+      <div>
+        <label for="quantity_box">
+          Quantity
+        </label>
+
+        <input type="text" id="quantity_box" name="query_quantity" value="<%= @the_clothe.quantity %>">
+      </div>
+
+      <button>
+        Update clothe
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all equipment
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new equipment
+    </h2>
+
+    <form action="/insert_equipment" method="post">
+      <div>
+        <label for="home_id_box">
+          Home
+        </label>
+
+        <input type="text" id="home_id_box" name="query_home_id">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description" rows="3"></textarea>
+      </div>
+
+      <button>
+        Create equipment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Home
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_equipment.each do |an_equipment| %>
+      <tr>
+        <td>
+          <%= an_equipment.id %>
+        </td>
+
+        <td>
+          <%= an_equipment.home_id %>
+        </td>
+
+        <td>
+          <%= an_equipment.description %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_equipment.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_equipment.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/equipment/<%= an_equipment.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
