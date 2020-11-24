@@ -10,4 +10,8 @@
 #  home_id     :integer
 #
 class Clothe < ApplicationRecord
+
+  belongs_to(:home, { :required => true, :class_name => "Household", :foreign_key => "home_id" })
+
+
 end

@@ -11,4 +11,8 @@
 #  equipment_id      :integer
 #
 class Component < ApplicationRecord
+
+  belongs_to(:equipment, { :required => false, :class_name => "Equipment", :foreign_key => "equipment_id" })
+
+  
 end
