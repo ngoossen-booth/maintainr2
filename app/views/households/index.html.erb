@@ -10,12 +10,45 @@
 
 <div>
   <div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Picture</th>
+      <th scope="col">Nickname</th>
+      <th scope="col">Wardrobe</th>
+      <th scope="col">Equipment</th>
+      <th scope="col">Details</th>
+
+    </tr>
+  </thead>
+
+      <% @list_of_households.each do |a_household| %>
+
+<tbody>
+    <tr class="table-light">
+        <td><%= a_household.picture %></td>
+        <td><%= a_household.nickname %></td>
+        <td>link to wardrobe</td>
+        <td>Link to equipment</td>
+
+        <td><a href="/households/<%= a_household.id %>"> Show details</a></td>
+    </tr>
+
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
     <h2>
       Add a new household
     </h2>
 
     <form action="/insert_household" method="post">
-
       <div>
         <label for="picture_box">
           Picture
@@ -38,74 +71,3 @@
     </form>
   </div>
 </div>
-
-<hr>
-<div>
-  <div>
-    <table>
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Owner
-        </th>
-
-        <th>
-          Picture
-        </th>
-
-        <th>
-          Nickname
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_households.each do |a_household| %>
-      <tr>
-        <td>
-          <%= a_household.id %>
-        </td>
-
-        <td>
-          <%= a_household.owner_id %>
-        </td>
-
-        <td>
-          <%= a_household.picture %>
-        </td>
-
-        <td>
-          <%= a_household.nickname %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_household.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_household.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/households/<%= a_household.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<hr>

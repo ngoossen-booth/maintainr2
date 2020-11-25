@@ -20,7 +20,7 @@ class HouseholdsController < ApplicationController
 
   def create
     the_household = Household.new
-    the_household.owner_id = params.fetch("query_owner_id")
+    the_household.owner_id = @current_user.id#params.fetch("query_owner_id")
     the_household.picture = params.fetch("query_picture")
     the_household.nickname = params.fetch("query_nickname")
 
@@ -36,7 +36,7 @@ class HouseholdsController < ApplicationController
     the_id = params.fetch("path_id")
     the_household = Household.where({ :id => the_id }).at(0)
 
-    the_household.owner_id = params.fetch("query_owner_id")
+    the_household.owner_id = @current_user.id#params.fetch("query_owner_id")
     the_household.picture = params.fetch("query_picture")
     the_household.nickname = params.fetch("query_nickname")
 

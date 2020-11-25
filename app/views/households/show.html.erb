@@ -1,31 +1,14 @@
 <div>
   <div>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/households">Households</a></li>
+  <li class="breadcrumb-item active"><a href="/households/<%=@the_household.id%>"><%=@the_household.nickname%></a></li>
+</ol>
     <h1>
-      Household #<%= @the_household.id %> details
+      <%= @the_household.nickname %> details
     </h1>
-
-    <div>
-      <div>
-        <a href="/households">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_household/<%= @the_household.id %>">
-          Delete household
-        </a>
-      </div>
-    </div>
-
+<hr>
     <dl>
-      <dt>
-        Owner
-      </dt>
-      <dd>
-        <%= @the_household.owner_id %>
-      </dd>
-
       <dt>
         Picture
       </dt>
@@ -41,14 +24,23 @@
       </dd>
 
       <dt>
-        Created at
+        Wardrobe
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_household.created_at) %> ago
+        link to wardrobe
+        <%= @the_household.clothes %>
+      </dd>
+
+            <dt>
+        Equipment
+      </dt>
+      <dd>
+        link to Equipment
+        <%= @the_household.equipment %>
       </dd>
 
       <dt>
-        Updated at
+        Last Updated
       </dt>
       <dd>
         <%= time_ago_in_words(@the_household.updated_at) %> ago
@@ -67,14 +59,6 @@
     </h2>
 
     <form action="/modify_household/<%= @the_household.id %>"  method="post" >
-      <div>
-        <label for="owner_id_box">
-          Owner
-        </label>
-
-        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_household.owner_id %>">
-      </div>
-
       <div>
         <label for="picture_box">
           Picture
@@ -99,3 +83,17 @@
 </div>
 
 <hr>
+    <div>
+      <div>
+        <a href="/households">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_household/<%= @the_household.id %>">
+          Delete household
+        </a>
+      </div>
+    </div>
+    <hr>
