@@ -10,6 +10,36 @@
 
 <div>
   <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Household</th>
+          <th scope="col">Details</th>
+        </tr>
+      </thead>
+
+        <% @list_of_clothes.each do |an_article_of_clothing| %>
+        
+      <tbody>
+        <tr class="table-light">
+          <td><%= an_article_of_clothing.description %></td>
+          <td><%= an_article_of_clothing.quantity %></td>
+          
+          <td><%=Household.where({:id=>an_article_of_clothing.home_id}).at(0).nickname%></td>
+          <td><a href="/clothes/<%= an_article_of_clothing.id %>"> Show details</a></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
     <h2>
       Add a new clothe
     </h2>
@@ -23,13 +53,21 @@
         <textarea id="description_box" name="query_description" rows="3"></textarea>
       </div>
 
-      <div>
-        <label for="home_id_box">
-          Home
-        </label>
 
-        <input type="text" id="home_id_box" name="query_home_id">
-      </div>
+    <div class="form-group">
+      <label for="home_id_box">Household</label>
+        <select class="form-control" id="home_id_box" name="query_home_nickname">
+          <% @list_of_households.each do |a_household| %>        
+            <option><%=a_household.nickname%></option>
+          <%end%>
+        </select>
+    </div>
+
+
+      <%# <div> %>
+        <%# <label for="home_id_box">Home</label> %>
+        <%# <input type="text" id="home_id_box" name="query_home_id"> %>
+      <%# </div> %>
 
       <div>
         <label for="quantity_box">
@@ -40,7 +78,7 @@
       </div>
 
       <button>
-        Create clothe
+        Create article of clothing
       </button>
     </form>
   </div>

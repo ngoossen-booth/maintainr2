@@ -1,22 +1,10 @@
 <div>
   <div>
     <h1>
-      Clothe #<%= @the_clothe.id %> details
+      <%= @the_clothe.description %>: details
     </h1>
 
-    <div>
-      <div>
-        <a href="/clothes">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_clothe/<%= @the_clothe.id %>">
-          Delete clothe
-        </a>
-      </div>
-    </div>
+<hr>
 
     <dl>
       <dt>
@@ -27,10 +15,10 @@
       </dd>
 
       <dt>
-        Home
+        Location
       </dt>
       <dd>
-        <%= @the_clothe.home_id %>
+      <%=Household.where({:id=>@the_clothe.home_id}).at(0).nickname%>
       </dd>
 
       <dt>
@@ -38,13 +26,6 @@
       </dt>
       <dd>
         <%= @the_clothe.quantity %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_clothe.created_at) %> ago
       </dd>
 
       <dt>
@@ -92,10 +73,25 @@
       </div>
 
       <button>
-        Update clothe
+        Update <%= @the_clothe.description %>
       </button>
     </form>
   </div>
 </div>
 
 <hr>
+
+    <div>
+      <div>
+        <a href="/clothes">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_clothe/<%= @the_clothe.id %>">
+          Delete article of clothing
+        </a>
+      </div>
+    </div>
+    <hr>

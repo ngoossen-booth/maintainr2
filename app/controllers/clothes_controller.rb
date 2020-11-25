@@ -1,8 +1,12 @@
 class ClothesController < ApplicationController
   def index
     #matching_clothes = Clothe.all
-    matching_household = params.fetch("path_id")
-    matching_clothes = matching_household.clothes
+    #matching_household = params.fetch("path_id")
+    matching_clothes = @current_user.clothes
+    matching_households = @current_user.households
+
+    @list_of_households = matching_households.order({ :created_at => :desc })
+
 
     @list_of_clothes = matching_clothes.order({ :created_at => :desc })
 
@@ -21,9 +25,14 @@ class ClothesController < ApplicationController
 
   def create
     the_clothe = Clothe.new
+    home_nickname = params.fetch("query_home_nickname")
+    matching_households = @current_user.households
+
+    the_clothe.owner_id = @current_user.id
     the_clothe.description = params.fetch("query_description")
-    the_clothe.home_id = params.fetch("query_home_id")
+    the_clothe.home_id = matching_households.where({:nickname=>home_nickname}).at(0).id#params.fetch("query_home_id")
     the_clothe.quantity = params.fetch("query_quantity")
+
 
     if the_clothe.valid?
       the_clothe.save

@@ -1,6 +1,9 @@
 class EquipmentController < ApplicationController
   def index
     matching_equipment = Equipment.all
+    matching_households = @current_user.households
+
+    @list_of_households = matching_households.order({ :created_at => :desc })
 
     @list_of_equipment = matching_equipment.order({ :created_at => :desc })
 
