@@ -1,6 +1,7 @@
 class HouseholdsController < ApplicationController
   def index
-    matching_households = Household.all
+    # matching_households = Household.all
+    matching_households = @current_user.households
 
     @list_of_households = matching_households.order({ :created_at => :desc })
 
