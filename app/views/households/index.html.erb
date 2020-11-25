@@ -26,7 +26,7 @@
         <% @list_of_households.each do |a_household| %>
       <tbody>
         <tr class="table-light">
-          <td><%= a_household.picture %></td>
+          <td><img src="<%= a_household.picture %>", alt ="House image" width="225" height="150"></td>
           <td><%= a_household.nickname %></td>
           <td><%= a_household.address %></td>
           <td><a href="/households/<%= a_household.id%>">link to wardrobe</a></td>
