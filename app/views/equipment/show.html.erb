@@ -1,31 +1,11 @@
 <div>
   <div>
     <h1>
-      Equipment #<%= @the_equipment.id %> details
+      <%= @the_equipment.description %>: details
     </h1>
-
-    <div>
-      <div>
-        <a href="/equipment">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_equipment/<%= @the_equipment.id %>">
-          Delete equipment
-        </a>
-      </div>
-    </div>
+<hr>
 
     <dl>
-      <dt>
-        Home
-      </dt>
-      <dd>
-        <%= @the_equipment.home_id %>
-      </dd>
-
       <dt>
         Description
       </dt>
@@ -34,10 +14,10 @@
       </dd>
 
       <dt>
-        Created at
+        Location
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_equipment.created_at) %> ago
+      <%=Household.where({:id=>@the_equipment.home_id}).at(0).nickname%>
       </dd>
 
       <dt>
@@ -50,24 +30,25 @@
   </div>
 </div>
 
+
 <hr>
 
 
 <div>
   <div>
     <h2>
-      Edit equipment
+      Edit <%= @the_equipment.description %>
     </h2>
 
     <form action="/modify_equipment/<%= @the_equipment.id %>"  method="post" >
-      <div>
-        <label for="home_id_box">
-          Home
-        </label>
-
-        <input type="text" id="home_id_box" name="query_home_id" value="<%= @the_equipment.home_id %>">
-      </div>
-
+    <div class="form-group">
+      <label for="home_id_box">Household</label>
+        <select class="form-control" id="home_id_box" name="query_home_nickname">
+          <% @list_of_households.each do |a_household| %>        
+            <option><%=a_household.nickname%></option>
+          <%end%>
+        </select>
+    </div>
       <div>
         <label for="description_box">
           Description
@@ -84,3 +65,19 @@
 </div>
 
 <hr>
+
+    <div>
+      <div>
+        <a href="/equipment">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_equipment/<%= @the_equipment.id %>">
+          Delete <%=@the_equipment.description%>
+        </a>
+      </div>
+    </div>
+
+    <hr>

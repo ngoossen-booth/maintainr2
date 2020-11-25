@@ -1,6 +1,6 @@
 class EquipmentController < ApplicationController
   def index
-    matching_equipment = Equipment.all
+    matching_equipment = @current_user.equipment
     matching_households = @current_user.households
 
     @list_of_households = matching_households.order({ :created_at => :desc })
@@ -12,7 +12,9 @@ class EquipmentController < ApplicationController
 
   def show
     the_id = params.fetch("path_id")
+    matching_households = @current_user.households
 
+    @list_of_households = matching_households.order({ :created_at => :desc })
     matching_equipment = Equipment.where({ :id => the_id })
 
     @the_equipment = matching_equipment.at(0)
@@ -40,9 +42,13 @@ class EquipmentController < ApplicationController
   def update
     the_id = params.fetch("path_id")
     the_equipment = Equipment.where({ :id => the_id }).at(0)
-
-    the_equipment.home_id = params.fetch("query_home_id")
+    home_nickname = params.fetch("query_home_nickname")
+    matching_households = @current_user.households
+    the_equipment.owner_id = @current_user.id
     the_equipment.description = params.fetch("query_description")
+    the_equipment.home_id = matching_households.where({:nickname=>home_nickname}).at(0).id
+    # the_equipment.home_id = params.fetch("query_home_id")
+    # the_equipment.description = params.fetch("query_description")
 
     if the_equipment.valid?
       the_equipment.save
