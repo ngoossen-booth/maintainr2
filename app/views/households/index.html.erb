@@ -15,6 +15,7 @@
     <tr>
       <th scope="col">Picture</th>
       <th scope="col">Nickname</th>
+      <th scope="col">Address</th>
       <th scope="col">Wardrobe</th>
       <th scope="col">Equipment</th>
       <th scope="col">Details</th>
@@ -28,6 +29,7 @@
     <tr class="table-light">
         <td><%= a_household.picture %></td>
         <td><%= a_household.nickname %></td>
+        <td><%= a_household.address %></td>
         <td><a href="/households/<%= a_household.id%>">link to wardrobe</a></td>
         <td><a href="/households/<%= a_household.id%>">Link to equipment</a></td>
         <td><a href="/households/<%= a_household.id %>"> Show details</a></td>
@@ -62,6 +64,14 @@
         </label>
 
         <input type="text" id="nickname_box" name="query_nickname">
+      </div>
+
+            <div>
+        <label for="address_box">
+          Address
+        </label>
+
+        <input type="text" id="address_box" name="query_address" placeholder="Optional...">
       </div>
 
       <button>

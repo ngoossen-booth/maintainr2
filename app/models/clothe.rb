@@ -8,6 +8,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  home_id     :integer
+#  owner_id    :integer
 #
 class Clothe < ApplicationRecord
 

@@ -23,6 +23,13 @@
         <%= @the_household.nickname %>
       </dd>
 
+            <dt>
+        address
+      </dt>
+      <dd>
+        <%= @the_household.address %>
+      </dd>
+
       <dt>
         Wardrobe
       </dt>
@@ -73,6 +80,14 @@
         </label>
 
         <input type="text" id="nickname_box" name="query_nickname" value="<%= @the_household.nickname %>">
+      </div>
+
+                  <div>
+        <label for="address_box">
+          Address
+        </label>
+
+        <input type="text" id="address_box" name="query_address" placeholder="Optional...">
       </div>
 
       <button>

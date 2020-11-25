@@ -22,22 +22,23 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%=@current_user.email%>'s world
+            <%=@current_user.first_name%>'s world
           </a>
           
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="/clothes" class="dropdown-item">
-              Clothes
-            </a>
             <a href="/households" class="dropdown-item">
-              Households
+              <%=@current_user.first_name%>'s Households
             </a>
-            <a href="/components" class="dropdown-item">
-              Components
+            <a href="/clothes" class="dropdown-item">
+              <%=@current_user.first_name%>'s Clothes
             </a>
             <a href="/equipment" class="dropdown-item">
-              Equipment
+              <%=@current_user.first_name%>'s Equipment
             </a>
+            <a href="/components" class="dropdown-item">
+              <%=@current_user.first_name%>'s Components
+            </a>
+
           </div>
         </li>
 

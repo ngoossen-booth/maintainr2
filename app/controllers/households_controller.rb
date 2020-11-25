@@ -22,6 +22,7 @@ class HouseholdsController < ApplicationController
     the_household = Household.new
     the_household.owner_id = @current_user.id#params.fetch("query_owner_id")
     the_household.picture = params.fetch("query_picture")
+    the_household.address = params.fetch("query_address")
     the_household.nickname = params.fetch("query_nickname")
 
     if the_household.valid?
@@ -38,6 +39,7 @@ class HouseholdsController < ApplicationController
 
     the_household.owner_id = @current_user.id#params.fetch("query_owner_id")
     the_household.picture = params.fetch("query_picture")
+    the_household.address = params.fetch("query_address")
     the_household.nickname = params.fetch("query_nickname")
 
     if the_household.valid?
