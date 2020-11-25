@@ -13,5 +13,8 @@ class Clothe < ApplicationRecord
 
   belongs_to(:home, { :required => true, :class_name => "Household", :foreign_key => "home_id" })
 
+  belongs_to(:owner, { :required => true, :class_name => "User", :foreign_key => "owner_id" })
+
+  has_one(:wearer, { :through => :home, :source => :owner })
 
 end
