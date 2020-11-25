@@ -22,8 +22,12 @@ class EquipmentController < ApplicationController
 
   def create
     the_equipment = Equipment.new
-    the_equipment.home_id = params.fetch("query_home_id")
+    home_nickname = params.fetch("query_home_nickname")
+    matching_households = @current_user.households
+    the_equipment.owner_id = @current_user.id
     the_equipment.description = params.fetch("query_description")
+    the_equipment.home_id = matching_households.where({:nickname=>home_nickname}).at(0).id #params.fetch("query_home_id")
+    
 
     if the_equipment.valid?
       the_equipment.save

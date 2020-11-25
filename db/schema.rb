@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_163905) do
+ActiveRecord::Schema.define(version: 2020_11_25_191427) do
 
   create_table "clothes", force: :cascade do |t|
     t.text "description"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_163905) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "owner_id"
   end
 
   create_table "households", force: :cascade do |t|

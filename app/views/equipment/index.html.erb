@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of all equipment
+      List of your equipment
     </h1>
   </div>
 </div>
@@ -10,19 +10,37 @@
 
 <div>
   <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Household</th>
+          <th scope="col">Details</th>
+        </tr>
+      </thead>
+      <% @list_of_equipment.each do |a_piece_of_equipment| %>
+        
+      <tbody>
+        <tr class="table-light">
+          <td><%= a_piece_of_equipment.description %></td>
+          
+          <td><%=Household.where({:id=>a_piece_of_equipment.home_id}).at(0).nickname%></td>
+          <td><a href="/equipment/<%= a_piece_of_equipment.id %>"> Show details</a></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
     <h2>
-      Add a new equipment
+      Add a new piece of equipment
     </h2>
-
     <form action="/insert_equipment" method="post">
-      <div>
-        <label for="home_id_box">
-          Home
-        </label>
-
-        <input type="text" id="home_id_box" name="query_home_id">
-      </div>
-
       <div>
         <label for="description_box">
           Description
@@ -31,71 +49,22 @@
         <textarea id="description_box" name="query_description" rows="3"></textarea>
       </div>
 
+
+
+    <div class="form-group">
+      <label for="home_id_box">Household</label>
+        <select class="form-control" id="home_id_box" name="query_home_nickname">
+          <% @list_of_households.each do |a_household| %>        
+            <option><%=a_household.nickname%></option>
+          <%end%>
+        </select>
+    </div>
+
+
       <button>
         Create equipment
       </button>
     </form>
-  </div>
-</div>
-
-<hr>
-<div>
-  <div>
-    <table>
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Home
-        </th>
-
-        <th>
-          Description
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_equipment.each do |an_equipment| %>
-      <tr>
-        <td>
-          <%= an_equipment.id %>
-        </td>
-
-        <td>
-          <%= an_equipment.home_id %>
-        </td>
-
-        <td>
-          <%= an_equipment.description %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(an_equipment.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(an_equipment.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/equipment/<%= an_equipment.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
   </div>
 </div>
 

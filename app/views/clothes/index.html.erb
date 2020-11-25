@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of all clothes
+      List of your clothes
     </h1>
   </div>
 </div>
@@ -41,7 +41,7 @@
 <div>
   <div>
     <h2>
-      Add a new clothe
+      Add a new article of clothing
     </h2>
 
     <form action="/insert_clothe" method="post">
@@ -81,75 +81,6 @@
         Create article of clothing
       </button>
     </form>
-  </div>
-</div>
-
-<hr>
-<div>
-  <div>
-    <table>
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Description
-        </th>
-
-        <th>
-          Home
-        </th>
-
-        <th>
-          Quantity
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_clothes.each do |a_clothe| %>
-      <tr>
-        <td>
-          <%= a_clothe.id %>
-        </td>
-
-        <td>
-          <%= a_clothe.description %>
-        </td>
-
-        <td>
-          <%= a_clothe.home_id %>
-        </td>
-
-        <td>
-          <%= a_clothe.quantity %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_clothe.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_clothe.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/clothes/<%= a_clothe.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
   </div>
 </div>
 
