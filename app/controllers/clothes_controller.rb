@@ -1,6 +1,8 @@
 class ClothesController < ApplicationController
   def index
-    matching_clothes = Clothe.all
+    #matching_clothes = Clothe.all
+    matching_household = params.fetch("path_id")
+    matching_clothes = matching_household.clothes
 
     @list_of_clothes = matching_clothes.order({ :created_at => :desc })
 

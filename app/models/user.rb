@@ -11,7 +11,10 @@
 class User < ApplicationRecord
   has_many(:households, { :class_name => "Household", :foreign_key => "owner_id", :dependent => :destroy })
   
-  
+  has_many(:clothes, { :class_name => "Clothe", :foreign_key => "owner_id", :dependent => :destroy })
+
+  has_many(:articles_of_clothing, { :through => :households, :source => :clothes })
+
   validates :email, :uniqueness => { :case_sensitive => false }
   
   validates :email, :presence => true
