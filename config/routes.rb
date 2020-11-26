@@ -30,7 +30,7 @@ get("/", { :controller => "households", :action => "index" })
   get("/households", { :controller => "households", :action => "index" })
   
   get("/households/:path_id", { :controller => "households", :action => "show" })
-  
+
   # UPDATE
   
   post("/modify_household/:path_id", { :controller => "households", :action => "update" })

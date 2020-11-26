@@ -12,8 +12,13 @@ class HouseholdsController < ApplicationController
     the_id = params.fetch("path_id")
 
     matching_households = Household.where({ :id => the_id })
-
     @the_household = matching_households.at(0)
+
+    matching_wardrobe = Clothe.where({:home_id => the_id})
+    @list_of_wardrobe = matching_wardrobe.order({ :created_at => :desc })
+
+    matching_equipment = Equipment.where({:home_id => the_id})
+    @list_of_equipment = matching_equipment.order({ :created_at => :desc })
 
     render({ :template => "households/show.html.erb" })
   end

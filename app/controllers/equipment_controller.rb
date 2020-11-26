@@ -2,9 +2,7 @@ class EquipmentController < ApplicationController
   def index
     matching_equipment = @current_user.equipment
     matching_households = @current_user.households
-
     @list_of_households = matching_households.order({ :created_at => :desc })
-
     @list_of_equipment = matching_equipment.order({ :created_at => :desc })
 
     render({ :template => "equipment/index.html.erb" })
@@ -13,7 +11,6 @@ class EquipmentController < ApplicationController
   def show
     the_id = params.fetch("path_id")
     matching_households = @current_user.households
-
     @list_of_households = matching_households.order({ :created_at => :desc })
     matching_equipment = Equipment.where({ :id => the_id })
 

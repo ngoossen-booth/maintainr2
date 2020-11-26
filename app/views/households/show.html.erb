@@ -5,47 +5,87 @@
   <li class="breadcrumb-item active"><a href="/households/<%=@the_household.id%>"><%=@the_household.nickname%></a></li>
 </ol>
     <h1>
-      <%= @the_household.nickname %> details
+      <%= @the_household.nickname%>: details
     </h1>
 <hr>
-    <dl>
-      <dt>
-        Picture
-      </dt>
-      <dd>
-        <%= @the_household.picture %>
-      </dd>
 
-      <dt>
-        Nickname
-      </dt>
-      <dd>
-        <%= @the_household.nickname %>
-      </dd>
+<div>
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Picture</th>
+          <th scope="col">Nickname</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-light">
+          <td><img src="<%= @the_household.picture %>", alt ="House image" width="225" height="150"></td>
+          <td><%= @the_household.nickname %></td>
+          <td><%= @the_household.address %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<hr>
 
-            <dt>
-        address
-      </dt>
-      <dd>
-        <%= @the_household.address %>
-      </dd>
+<h3>
+Wardrobe
+</h3>
 
-      <dt>
-        Wardrobe
-      </dt>
-      <dd>
-        link to wardrobe
-        <%= @the_household.clothes %>
-      </dd>
+<div>
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Details</th>
+        </tr>
+      </thead>
+              <% @list_of_wardrobe.each do |a_wardrobe_item| %>
+      <tbody>
+        <tr class="table-light">
+          <td><img src="<%= a_wardrobe_item.description %>", alt ="House image" width="225" height="150"></td>
+          <td><%= a_wardrobe_item.quantity %></td>
+          <td><a href="/clothes/<%= a_wardrobe_item.id %>"> Show details</a></td>
+        </tr>
+      </tbody>
+      <%end%>
+    </table>
+  </div>
+</div>
 
-            <dt>
-        Equipment
-      </dt>
-      <dd>
-        link to Equipment
-        <%= @the_household.equipment %>
-      </dd>
+<hr>
 
+<h3>
+Equipment
+</h3>
+
+<div>
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Details</th>
+        </tr>
+      </thead>
+              <% @list_of_equipment.each do |a_piece_of_equipment| %>
+      <tbody>
+        <tr class="table-light">
+          <td><img src="<%= a_piece_of_equipment.description %>", alt ="House image" width="225" height="150"></td>
+          <td><a href="/clothes/<%= a_piece_of_equipment.id %>"> Show details</a></td>
+        </tr>
+      </tbody>
+      <%end%>
+    </table>
+  </div>
+</div>
+
+<hr>
       <dt>
         Last Updated
       </dt>
