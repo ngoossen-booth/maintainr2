@@ -27,7 +27,7 @@
           <td><%= an_article_of_clothing.description %></td>
           <td><%= an_article_of_clothing.quantity %></td>
           
-          <td><%=Household.where({:id=>an_article_of_clothing.home_id}).at(0).nickname%></td>
+          <td><a href="/households/<%=Household.where({:id=>an_article_of_clothing.home_id}).at(0).id%>"><%=Household.where({:id=>an_article_of_clothing.home_id}).at(0).nickname%></td>
           <td><a href="/clothes/<%= an_article_of_clothing.id %>"> Show details</a></td>
         </tr>
         <% end %>

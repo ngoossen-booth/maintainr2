@@ -48,7 +48,7 @@ Wardrobe
               <% @list_of_wardrobe.each do |a_wardrobe_item| %>
       <tbody>
         <tr class="table-light">
-          <td><img src="<%= a_wardrobe_item.description %>", alt ="House image" width="225" height="150"></td>
+          <td><%= a_wardrobe_item.description %></td>
           <td><%= a_wardrobe_item.quantity %></td>
           <td><a href="/clothes/<%= a_wardrobe_item.id %>"> Show details</a></td>
         </tr>
@@ -59,6 +59,49 @@ Wardrobe
 </div>
 
 <hr>
+
+<div>
+  <div>
+    <h2>
+      Add to the wardrobe
+    </h2>
+
+    <form action="/insert_clothe" method="post">
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description" rows="3"></textarea>
+      </div>
+
+
+    <div class="form-group">
+      <label for="home_id_box">Household</label>
+        <select class="form-control" id="home_id_box" name="query_home_nickname">   
+            <option><%=@the_household.nickname%></option>
+        </select>
+    </div>
+
+
+      <div>
+        <label for="quantity_box">
+          Quantity
+        </label>
+
+        <input type="text" id="quantity_box" name="query_quantity">
+      </div>
+
+      <button>
+        Create article of clothing
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+
+
 
 <h3>
 Equipment
@@ -76,12 +119,45 @@ Equipment
               <% @list_of_equipment.each do |a_piece_of_equipment| %>
       <tbody>
         <tr class="table-light">
-          <td><img src="<%= a_piece_of_equipment.description %>", alt ="House image" width="225" height="150"></td>
+          <td><%= a_piece_of_equipment.description %></td>
           <td><a href="/clothes/<%= a_piece_of_equipment.id %>"> Show details</a></td>
         </tr>
       </tbody>
       <%end%>
     </table>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new piece of equipment
+    </h2>
+    <form action="/insert_equipment" method="post">
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description" rows="3"></textarea>
+      </div>
+
+
+
+    <div class="form-group">
+      <label for="home_id_box">Household</label>
+        <select class="form-control" id="home_id_box" name="query_home_nickname">
+            <option><%=@the_household.nickname%></option>
+        </select>
+    </div>
+
+
+      <button>
+        Create equipment
+      </button>
+    </form>
   </div>
 </div>
 

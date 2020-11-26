@@ -24,7 +24,7 @@
         <tr class="table-light">
           <td><%= a_piece_of_equipment.description %></td>
           
-          <td><%=Household.where({:id=>a_piece_of_equipment.home_id}).at(0).nickname%></td>
+          <td><a href="/households/<%=Household.where({:id=>a_piece_of_equipment.home_id}).at(0).id%>"> <%=Household.where({:id=>a_piece_of_equipment.home_id}).at(0).nickname%></td>
           <td><a href="/equipment/<%= a_piece_of_equipment.id %>"> Show details</a></td>
         </tr>
         <% end %>
