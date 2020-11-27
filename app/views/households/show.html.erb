@@ -8,10 +8,14 @@
 </div>
 
 
+<div>
 
+  <div>
     <h1>
       <%= @the_household.nickname%>: details
     </h1>
+  </div>
+</div>
 <hr>
 
 <div>
@@ -72,30 +76,23 @@ Wardrobe
     </h2>
 
     <form action="/insert_clothe" method="post">
-      <div>
-        <label for="description_box">
+<div class="form-group">
+  <fieldset>
+    <%# <label class="control-label" for="clothing_home_id_box">Household</label> %>
+    <input class="form-control" id="clothing_home_id_box" type="hidden" placeholder="<%=@the_household.nickname%>" readonly="" name="query_home_nickname">
+  </fieldset>
+</div>
+        <label for="clothing_description_box">
           Description
         </label>
 
-        <textarea id="description_box" name="query_description" rows="3"></textarea>
-      </div>
+        <textarea id="clothing_description_box" name="query_description" rows="3"></textarea>
 
-
-    <div class="form-group">
-      <label for="home_id_box">Household</label>
-        <select class="form-control" id="home_id_box" name="query_home_nickname">   
-            <option><%=@the_household.nickname%></option>
-        </select>
-    </div>
-
-
-      <div>
-        <label for="quantity_box">
+        <label for="clothing_quantity_box">
           Quantity
         </label>
 
-        <input type="text" id="quantity_box" name="query_quantity">
-      </div>
+        <input type="text" id="clothing_quantity_box" name="query_quantity">
 
       <button>
         Create article of clothing
@@ -105,7 +102,6 @@ Wardrobe
 </div>
 
 <hr>
-
 
 
 <h3>
@@ -125,7 +121,7 @@ Equipment
       <tbody>
         <tr class="table-light">
           <td><%= a_piece_of_equipment.description %></td>
-          <td><a href="/clothes/<%= a_piece_of_equipment.id %>"> Show details</a></td>
+          <td><a href="/equipment/<%= a_piece_of_equipment.id %>"> Show details</a></td>
         </tr>
       </tbody>
       <%end%>
@@ -141,22 +137,19 @@ Equipment
       Add a new piece of equipment
     </h2>
     <form action="/insert_equipment" method="post">
-      <div>
-        <label for="description_box">
+
+<div class="form-group">
+  <fieldset>
+    <%# <label class="control-label" for="equipment_home_id_box">Household</label> %>
+    <input class="form-control" id="equipment_home_id_box" type="hidden" placeholder="<%=@the_household.nickname%>" readonly="" name="query_home_nickname">
+  </fieldset>
+</div>
+
+        <label for="equipment_description_box">
           Description
         </label>
 
-        <textarea id="description_box" name="query_description" rows="3"></textarea>
-      </div>
-
-
-
-    <div class="form-group">
-      <label for="home_id_box">Household</label>
-        <select class="form-control" id="home_id_box" name="query_home_nickname">
-            <option><%=@the_household.nickname%></option>
-        </select>
-    </div>
+        <textarea id="equipment_description_box" name="query_description" rows="3"></textarea>
 
 
       <button>
@@ -174,8 +167,6 @@ Equipment
         <%= time_ago_in_words(@the_household.updated_at) %> ago
       </dd>
     </dl>
-  </div>
-</div>
 
 <hr>
 
@@ -187,29 +178,25 @@ Equipment
     </h2>
 
     <form action="/modify_household/<%= @the_household.id %>"  method="post" >
-      <div>
+      
         <label for="picture_box">
           Picture
         </label>
 
         <input type="text" id="picture_box" name="query_picture" value="<%= @the_household.picture %>">
-      </div>
 
-      <div>
+      
         <label for="nickname_box">
           Nickname
         </label>
 
         <input type="text" id="nickname_box" name="query_nickname" value="<%= @the_household.nickname %>">
-      </div>
-
-                  <div>
+      
         <label for="address_box">
           Address
         </label>
 
         <input type="text" id="address_box" name="query_address" placeholder="Optional...">
-      </div>
 
       <button>
         Update household
@@ -232,4 +219,4 @@ Equipment
         </a>
       </div>
     </div>
-    <hr>
+<hr>
