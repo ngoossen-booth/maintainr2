@@ -1,5 +1,14 @@
 <div>
   <div>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/clothes">Clothes</a></li>
+  <li class="breadcrumb-item active"><a href="/clothes/<%=@the_clothe.id%>"><%=@the_clothe.description%></a></li>
+</ol>
+</div>
+</div>
+
+<div>
+  <div>
     <h1>
       <%= @the_clothe.description %>: details
     </h1>
@@ -18,7 +27,8 @@
         Location
       </dt>
       <dd>
-      <%=Household.where({:id=>@the_clothe.home_id}).at(0).nickname%>
+      <a href="/households/<%=Household.where({:id=>@the_clothe.home_id}).at(0).id%>"> <%=Household.where({:id=>@the_clothe.home_id}).at(0).nickname%></a>
+      <%# <%=Household.where({:id=>@the_clothe.home_id}).at(0).nickname%> 
       </dd>
 
       <dt>
