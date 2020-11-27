@@ -83,18 +83,19 @@ Wardrobe
     <input class="form-control" id="clothing_home_id_box" type="hidden" placeholder="<%=@the_household.nickname%>" readonly="" name="query_home_nickname">
   </fieldset>
 </div>
-
+<div>
         <label for="clothing_description_box">
           Description
         </label>
         <textarea id="clothing_description_box" name="query_description" rows="3"></textarea>
-
+</div>
+<div>
         <label for="clothing_quantity_box">
           Quantity
         </label>
 
         <input type="text" id="clothing_quantity_box" name="query_quantity">
-
+</div>
       <button>
         Create article of clothing
       </button>
@@ -146,12 +147,13 @@ Equipment
   </fieldset>
 </div>
 
+<div>
         <label for="equipment_description_box">
           Description
         </label>
 
         <textarea id="equipment_description_box" name="query_description" rows="3"></textarea>
-
+</div>
 
       <button>
         Create equipment
@@ -179,26 +181,27 @@ Equipment
     </h2>
 
     <form action="/modify_household/<%= @the_household.id %>"  method="post" >
-      
+      <div>
         <label for="picture_box">
           Picture
         </label>
 
         <input type="text" id="picture_box" name="query_picture" value="<%= @the_household.picture %>">
-
-      
+      </div>
+      <div>
         <label for="nickname_box">
           Nickname
         </label>
 
         <input type="text" id="nickname_box" name="query_nickname" value="<%= @the_household.nickname %>">
-      
+      </div>
+      <div>      
         <label for="address_box">
           Address
         </label>
 
         <input type="text" id="address_box" name="query_address" placeholder="Optional...">
-
+</div>
       <button>
         Update household
       </button>

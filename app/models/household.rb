@@ -18,4 +18,5 @@ class Household < ApplicationRecord
 
 
   validates(:owner_id, { :presence => true })
+  validates(:nickname, { :presence => true })
 end
