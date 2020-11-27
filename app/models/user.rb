@@ -19,6 +19,10 @@ class User < ApplicationRecord
 
 
   has_many(:equipment, { :class_name => "Equipment", :foreign_key => "owner_id", :dependent => :destroy })
+  
+  has_many(:components, { :class_name => "Component", :foreign_key => "owner_id", :dependent => :destroy })
+  
+  
   validates :email, :uniqueness => { :case_sensitive => false }
   
   validates :email, :presence => true

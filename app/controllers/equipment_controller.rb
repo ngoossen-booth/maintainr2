@@ -12,9 +12,13 @@ class EquipmentController < ApplicationController
     the_id = params.fetch("path_id")
     matching_households = @current_user.households
     @list_of_households = matching_households.order({ :created_at => :desc })
+    
+    
     matching_equipment = Equipment.where({ :id => the_id })
-
     @the_equipment = matching_equipment.at(0)
+
+    matching_components = Component.where({:equipment_id => the_id})
+    @list_of_components = matching_components.order({ :next_service_date => :desc })
 
     render({ :template => "equipment/show.html.erb" })
   end

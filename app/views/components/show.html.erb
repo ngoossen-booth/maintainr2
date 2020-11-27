@@ -1,29 +1,39 @@
 <div>
   <div>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/components">Components</a></li>
+      <li class="breadcrumb-item active"><a href="/components/<%=@the_component.id%>"><%=@the_component.description%></a></li>
+    </ol>
+  </div>
+</div>
+
+<div>
+  <div>
     <h1>
-      Component #<%= @the_component.id %> details
+      <%= @the_component.description %>: details
     </h1>
 
-    <div>
-      <div>
-        <a href="/components">
-          Go back
-        </a>
-      </div>
 
-      <div>
-        <a href="/delete_component/<%= @the_component.id %>">
-          Delete component
-        </a>
-      </div>
-    </div>
+        <% which_piece_of_equipment_id = Equipment.where({:id=>@the_component.equipment_id}).at(0).id%>
+        <% which_piece_of_equipment_description = Equipment.where({:id=>@the_component.equipment_id}).at(0).description%>
+        <% which_household_id = Equipment.where({:id=>which_piece_of_equipment_id}).at(0).home_id%>
+        <% which_household_nickname = Household.where({:id=>which_household_id}).at(0).nickname%>
+<hr>
 
     <dl>
+
+      <dt>
+        Household
+      </dt>
+      <dd>
+        <a href="/households/<%=which_household_id%>"><%=which_household_nickname%></a>
+      </dd>
+    
       <dt>
         Equipment
       </dt>
       <dd>
-        <%= @the_component.equipment_id %>
+        <a href="/equipment/<%=which_piece_of_equipment_id%>"><%=which_piece_of_equipment_description%></a>
       </dd>
 
       <dt>
@@ -116,3 +126,19 @@
 </div>
 
 <hr>
+
+    <div>
+      <div>
+        <a href="/components">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_component/<%= @the_component.id %>">
+          Delete component
+        </a>
+      </div>
+    </div>
+
+    <hr>

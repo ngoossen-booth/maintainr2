@@ -1,6 +1,7 @@
 <div>
   <div>
     <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/households/<%=@the_equipment.home_id%>"><%=Household.where({:id=>@the_equipment.home_id}).at(0).nickname%></a></li>
     <li class="breadcrumb-item"><a href="/equipment">Equipment</a></li>
     <li class="breadcrumb-item active"><a href="/equipment/<%=@the_equipment.id%>"><%=@the_equipment.description%></a></li>
     </ol>
@@ -31,7 +32,7 @@
       <%# <%=Household.where({:id=>@the_clothe.home_id}).at(0).nickname%> 
       </dd>
 
-      
+
       <dt>
         Updated at
       </dt>
@@ -42,6 +43,80 @@
   </div>
 </div>
 
+<hr>
+
+<h3>
+Components for <%= @the_equipment.description %>
+</h3>
+
+<div>
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Next Service Date</th>
+          <th scope="col">Details</th>
+        </tr>
+      </thead>
+              <% @list_of_components.each do |a_component| %>
+      <tbody>
+        <tr class="table-light">
+          <td><%= a_component.description %></td>
+          <td><%= a_component.next_service_date %></td>
+          <td><a href="/components/<%= a_component.id %>"> Show details</a></td>
+        </tr>
+      </tbody>
+      <%end%>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new component
+    </h2>
+
+    <form action="/insert_component" method="post">
+
+      <div>
+        <label for="equipment_id_box">Equipment: <%=@the_equipment.description%></label>
+        <input type="hidden" id="equipment_id_box" placeholder="<%=@the_equipment.id%>" value="<%=@the_equipment.id%>" name="query_equipment_id">
+      </div>
+
+      <div>
+        <label for="last_service_date_box">
+          Last service date
+        </label>
+
+        <input type="datetime-local" id="last_service_date_box" name="query_last_service_date">
+      </div>
+
+      <div>
+        <label for="next_service_date_box">
+          Next service date
+        </label>
+
+        <input type="datetime-local" id="next_service_date_box" name="query_next_service_date">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description">
+      </div>
+
+      <button>
+        Create component
+      </button>
+    </form>
+  </div>
+</div>
 
 <hr>
 

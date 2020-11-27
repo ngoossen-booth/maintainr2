@@ -1,8 +1,51 @@
 <div>
+<div>
+<ol class="breadcrumb">
+<li class="breadcrumb-item active"><a href="/components">Components</a></li>
+</ol>
+</div>
+</div>
+
+
+<div>
   <div>
     <h1>
       List of all components
     </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Household</th>
+          <th scope="col">Equipment</th>
+          <th scope="col">Description</th>
+          <th scope="col">Next Service Date</th>
+          <th scope="col">Details</th>
+        </tr>
+      </thead>
+
+      <% @list_of_components.each do |a_component| %>
+        <% which_piece_of_equipment_id = Equipment.where({:id=>a_component.equipment_id}).at(0).id%>
+        <% which_piece_of_equipment_description = Equipment.where({:id=>a_component.equipment_id}).at(0).description%>
+        <% which_household_id = Equipment.where({:id=>which_piece_of_equipment_id}).at(0).home_id%>
+        <% which_household_nickname = Household.where({:id=>which_household_id}).at(0).nickname%>
+      <tbody>
+        <tr class="table-light">
+          <td><a href="/households/<%=which_household_id%>"><%=which_household_nickname%></td>
+          <td><a href="/equipment/<%=which_piece_of_equipment_id%>"><%=which_piece_of_equipment_description%></td>
+          <td><%= a_component.description %></td>
+          <td><%= a_component.next_service_date %></td>
+          <td><a href="/components/<%= a_component.id %>"> Show details</a></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
@@ -55,80 +98,4 @@
 </div>
 
 <hr>
-<div>
-  <div>
-    <table>
-      <tr>
-        <th>
-          ID
-        </th>
 
-        <th>
-          Equipment
-        </th>
-
-        <th>
-          Last service date
-        </th>
-
-        <th>
-          Next service date
-        </th>
-
-        <th>
-          Description
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_components.each do |a_component| %>
-      <tr>
-        <td>
-          <%= a_component.id %>
-        </td>
-
-        <td>
-          <%= a_component.equipment_id %>
-        </td>
-
-        <td>
-          <%= a_component.last_service_date %>
-        </td>
-
-        <td>
-          <%= a_component.next_service_date %>
-        </td>
-
-        <td>
-          <%= a_component.description %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_component.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_component.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/components/<%= a_component.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<hr>
