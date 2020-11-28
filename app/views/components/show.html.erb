@@ -85,11 +85,10 @@
 
     <form action="/modify_component/<%= @the_component.id %>"  method="post" >
       <div>
-        <label for="equipment_id_box">
-          Equipment
+        <label for="equipment_id_box">Equipment: <%=which_piece_of_equipment_description%>
         </label>
 
-        <input type="text" id="equipment_id_box" name="query_equipment_id" value="<%= @the_component.equipment_id %>">
+        <input type="hidden" id="equipment_id_box" name="query_equipment_id" value="<%= @the_component.equipment_id %>">
       </div>
 
       <div>
@@ -97,7 +96,7 @@
           Last service date
         </label>
 
-        <input type="datetime-local" id="last_service_date_box" name="query_last_service_date"
+        <input type="date" id="last_service_date_box" name="query_last_service_date"
          value="<%= @the_component.last_service_date %>">
       </div>
 
@@ -106,7 +105,7 @@
           Next service date
         </label>
 
-        <input type="datetime-local" id="next_service_date_box" name="query_next_service_date"
+        <input type="date" id="next_service_date_box" name="query_next_service_date"
          value="<%= @the_component.next_service_date %>">
       </div>
 
