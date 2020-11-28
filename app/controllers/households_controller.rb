@@ -34,7 +34,7 @@ class HouseholdsController < ApplicationController
       the_household.save
       redirect_to("/households", { :notice => "Household created successfully." })
     else
-      redirect_to("/households", { :notice => "Household failed to create successfully." })
+      redirect_to("/households", { :alert => "Household failed to create successfully." })
     end
   end
 

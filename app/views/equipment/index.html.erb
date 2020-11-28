@@ -26,6 +26,7 @@
           <th scope="col">Description</th>
           <th scope="col">Household</th>
           <th scope="col">Details</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <% @list_of_equipment.each do |a_piece_of_equipment| %>
@@ -33,9 +34,9 @@
       <tbody>
         <tr class="table-light">
           <td><%= a_piece_of_equipment.description %></td>
-          
           <td><a href="/households/<%=Household.where({:id=>a_piece_of_equipment.home_id}).at(0).id%>"> <%=Household.where({:id=>a_piece_of_equipment.home_id}).at(0).nickname%></td>
-          <td><a href="/equipment/<%= a_piece_of_equipment.id %>"> Show details</a></td>
+          <td><a href="/equipment/<%= a_piece_of_equipment.id %>"><i class="fas fa-ellipsis-h"></i></a></td>
+          <td><a href="/delete_epuipment/<%= a_piece_of_equipment.id %>"><i class="fas fa-trash-alt"></i></a></td>
         </tr>
         <% end %>
       </tbody>
@@ -56,7 +57,7 @@
           Description
         </label>
 
-        <textarea id="description_box" name="query_description" rows="3"></textarea>
+        <textarea id="description_box" name="query_description" rows="3" placeholder="Example: furnace"></textarea>
       </div>
 
 

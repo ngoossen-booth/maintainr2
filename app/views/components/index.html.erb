@@ -41,7 +41,8 @@
           <td><a href="/equipment/<%=which_piece_of_equipment_id%>"><%=which_piece_of_equipment_description%></td>
           <td><%= a_component.description %></td>
           <td><%= a_component.next_service_date %></td>
-          <td><a href="/components/<%= a_component.id %>"> Show details</a></td>
+          <td><a href="/components/<%= a_component.id %>"><i class="fas fa-ellipsis-h"></i></a></td>
+          <td><a href="/delete_component/<%= a_component.id %>"><i class="fas fa-trash-alt"></i></a></td>
         </tr>
         <% end %>
       </tbody>

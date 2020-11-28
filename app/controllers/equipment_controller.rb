@@ -36,7 +36,7 @@ class EquipmentController < ApplicationController
       the_equipment.save
       redirect_to("/equipment", { :notice => "Equipment created successfully." })
     else
-      redirect_to("/equipment", { :notice => "Equipment failed to create successfully." })
+      redirect_to("/equipment", { :alert => "Equipment failed to create successfully." })
     end
   end
 

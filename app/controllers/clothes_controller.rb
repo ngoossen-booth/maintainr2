@@ -40,7 +40,7 @@ class ClothesController < ApplicationController
       the_clothe.save
       redirect_to("/clothes", { :notice => "Clothe created successfully." })
     else
-      redirect_to("/clothes", { :notice => "Clothe failed to create successfully." })
+      redirect_to("/clothes", { :alert => "Clothe failed to create successfully." })
     end
   end
 
@@ -59,9 +59,9 @@ class ClothesController < ApplicationController
 
     if the_clothe.valid?
       the_clothe.save
-      redirect_to("/clothes/#{the_clothe.id}", { :notice => "Clothe updated successfully."} )
+      redirect_to("/clothes/#{the_clothe.id}", { :notice => "Article of clothing updated successfully."} )
     else
-      redirect_to("/clothes/#{the_clothe.id}", { :alert => "Clothe failed to update successfully." })
+      redirect_to("/clothes/#{the_clothe.id}", { :alert => "Article of clothing failed to update successfully." })
     end
   end
 
@@ -71,6 +71,6 @@ class ClothesController < ApplicationController
 
     the_clothe.destroy
 
-    redirect_to("/clothes", { :notice => "Clothe deleted successfully."} )
+    redirect_to("/clothes", { :notice => "Article of clothing deleted successfully."} )
   end
 end

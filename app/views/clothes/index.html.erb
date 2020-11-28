@@ -25,6 +25,7 @@
           <th scope="col">Quantity</th>
           <th scope="col">Household</th>
           <th scope="col">Details</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
 
@@ -36,7 +37,8 @@
           <td><%= an_article_of_clothing.quantity %></td>
           
           <td><a href="/households/<%=Household.where({:id=>an_article_of_clothing.home_id}).at(0).id%>"><%=Household.where({:id=>an_article_of_clothing.home_id}).at(0).nickname%></td>
-          <td><a href="/clothes/<%= an_article_of_clothing.id %>"> Show details</a></td>
+          <td><a href="/clothes/<%= an_article_of_clothing.id %>"><i class="fas fa-ellipsis-h"></i></a></td>
+          <td><a href="/delete_clothe/<%= an_article_of_clothing.id %>"><i class="fas fa-trash-alt"></i></a></td>
         </tr>
         <% end %>
       </tbody>

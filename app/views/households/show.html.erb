@@ -77,24 +77,23 @@ Wardrobe
     </h2>
 
     <form action="/insert_clothe" method="post">
-<div class="form-group">
-  <fieldset>
-    <%# <label class="control-label" for="clothing_home_id_box">Household</label> %>
-    <input class="form-control" id="clothing_home_id_box" type="hidden" placeholder="<%=@the_household.nickname%>" readonly="" name="query_home_nickname">
-  </fieldset>
-</div>
-<div>
+      <div>
+          <label for="clothing_home_id_box"></label>
+          <input id="clothing_home_id_box" type="hidden" value="<%=@the_household.nickname%>" name="query_home_nickname">
+        </fieldset>
+      </div>
+      <div>
         <label for="clothing_description_box">
           Description
         </label>
-        <textarea id="clothing_description_box" name="query_description" rows="3"></textarea>
-</div>
-<div>
+        <textarea id="clothing_description_box" name="query_description" rows="3" placeholder="Example: boxers"></textarea>
+      </div>
+      <div>
         <label for="clothing_quantity_box">
           Quantity
         </label>
 
-        <input type="text" id="clothing_quantity_box" name="query_quantity">
+        <input type="text" id="clothing_quantity_box" name="query_quantity" placeholder="Example: 5">
 </div>
       <button>
         Create article of clothing
@@ -138,22 +137,20 @@ Equipment
     <h2>
       Add a new piece of equipment
     </h2>
-    <form action="/insert_equipment" method="post">
+      <form action="/insert_equipment" method="post">
 
-<div class="form-group">
-  <fieldset>
-    <%# <label class="control-label" for="equipment_home_id_box">Household</label> %>
-    <input class="form-control" id="equipment_home_id_box" type="hidden" placeholder="<%=@the_household.nickname%>" readonly="" name="query_home_nickname">
-  </fieldset>
-</div>
+      <div>
+          <label for="equipment_home_id_box">Household</label>
+          <input id="equipment_home_id_box" type="hidden" value="<%=@the_household.nickname%>" name="query_home_nickname">
+      </div>
 
-<div>
+      <div>
         <label for="equipment_description_box">
           Description
         </label>
 
-        <textarea id="equipment_description_box" name="query_description" rows="3"></textarea>
-</div>
+        <textarea id="equipment_description_box" name="query_description" rows="3" placeholder="Example: Furnace"></textarea>
+      </div>
 
       <button>
         Create equipment
@@ -200,7 +197,7 @@ Equipment
           Address
         </label>
 
-        <input type="text" id="address_box" name="query_address" placeholder="Optional...">
+        <input type="text" id="address_box" name="query_address" value="<%= @the_household.address%>" placeholder="Optional...">
 </div>
       <button>
         Update household
