@@ -35,7 +35,7 @@ class ClothesController < ApplicationController
       the_clothe.save
       redirect_to("/clothes", { :notice => "Article of clothing created successfully." })
     else
-      redirect_to("/clothes", { :alert => "Article of clothing failed to create successfully." })
+      redirect_to("/clothes", { :notice => "Article of clothing failed to create successfully." })
     end
   end
 
@@ -56,7 +56,7 @@ class ClothesController < ApplicationController
       the_clothe.save
       redirect_to("/clothes/#{the_clothe.id}", { :notice => "Article of clothing updated successfully."} )
     else
-      redirect_to("/clothes/#{the_clothe.id}", { :alert => "Article of clothing failed to update successfully." })
+      redirect_to("/clothes/#{the_clothe.id}", { :notice => "Article of clothing failed to update successfully." })
     end
   end
 
