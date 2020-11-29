@@ -4,10 +4,7 @@ class ClothesController < ApplicationController
     #matching_household = params.fetch("path_id")
     matching_clothes = @current_user.clothes
     matching_households = @current_user.households
-
     @list_of_households = matching_households.order({ :created_at => :desc })
-
-
     @list_of_clothes = matching_clothes.order({ :created_at => :desc })
 
     render({ :template => "clothes/index.html.erb" })
@@ -16,11 +13,9 @@ class ClothesController < ApplicationController
   def show
     the_id = params.fetch("path_id")
     matching_households = @current_user.households
-
     @list_of_households = matching_households.order({ :created_at => :desc })
 
     matching_clothes = Clothe.where({ :id => the_id })
-
     @the_clothe = matching_clothes.at(0)
 
     render({ :template => "clothes/show.html.erb" })
@@ -38,9 +33,9 @@ class ClothesController < ApplicationController
 
     if the_clothe.valid?
       the_clothe.save
-      redirect_to("/clothes", { :notice => "Clothe created successfully." })
+      redirect_to("/clothes", { :notice => "Article of clothing created successfully." })
     else
-      redirect_to("/clothes", { :alert => "Clothe failed to create successfully." })
+      redirect_to("/clothes", { :alert => "Article of clothing failed to create successfully." })
     end
   end
 
