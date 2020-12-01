@@ -18,7 +18,7 @@ class EquipmentController < ApplicationController
     @the_equipment = matching_equipment.at(0)
 
     matching_components = Component.where({:equipment_id => the_id})
-    @list_of_components = matching_components.order({ :next_service_date => :desc })
+    @list_of_components = matching_components.order({ :next_service_date => :asc })
 
     render({ :template => "equipment/show.html.erb" })
   end

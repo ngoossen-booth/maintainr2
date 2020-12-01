@@ -7,7 +7,7 @@ class ComponentsController < ApplicationController
     @list_of_households = matching_households.order({ :created_at => :desc })
 
     matching_components = @current_user.components
-    @list_of_components = matching_components.order({ :created_at => :desc })
+    @list_of_components = matching_components.order({ :next_service_date => :asc })
 
     render({ :template => "components/index.html.erb" })
   end

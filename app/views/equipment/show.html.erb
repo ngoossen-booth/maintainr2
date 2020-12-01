@@ -88,11 +88,19 @@ Components for <%= @the_equipment.description %>
       </div>
 
       <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" placeholder="Example: Air Filter">
+      </div>
+      
+      <div>
         <label for="last_service_date_box">
           Last service date
         </label>
 
-        <input type="date" id="last_service_date_box" name="query_last_service_date">
+        <input type="date" id="last_service_date_box" value="<%=Date.today%>" name="query_last_service_date">
       </div>
 
       <div>
@@ -101,14 +109,6 @@ Components for <%= @the_equipment.description %>
         </label>
 
         <input type="date" id="next_service_date_box" name="query_next_service_date">
-      </div>
-
-      <div>
-        <label for="description_box">
-          Description
-        </label>
-
-        <input type="text" id="description_box" name="query_description" placeholder="Example: Air Filter">
       </div>
 
       <button>
