@@ -16,5 +16,5 @@ class Component < ApplicationRecord
   belongs_to(:equipment, { :required => true, :class_name => "Equipment", :foreign_key => "equipment_id" })
 
   belongs_to(:owner, { :required => true, :class_name => "User", :foreign_key => "owner_id" })
-
+  validates(:description, { :presence => true })
 end

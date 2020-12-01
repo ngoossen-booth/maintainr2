@@ -16,4 +16,5 @@ class Equipment < ApplicationRecord
   belongs_to(:owner, { :required => true, :class_name => "User", :foreign_key => "owner_id" })
 
   has_many(:components, { :class_name => "Component", :foreign_key => "equipment_id", :dependent => :destroy })
+  validates(:description, { :presence => true })
 end

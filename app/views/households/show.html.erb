@@ -140,7 +140,7 @@ Equipment
       <form action="/insert_equipment" method="post">
 
       <div>
-          <label for="equipment_home_id_box">Household</label>
+          <label for="equipment_home_id_box">Household:<%=@the_household.nickname%> </label>
           <input id="equipment_home_id_box" type="hidden" value="<%=@the_household.nickname%>" name="query_home_nickname">
       </div>
 

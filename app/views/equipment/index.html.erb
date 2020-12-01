@@ -36,7 +36,7 @@
           <td><%= a_piece_of_equipment.description %></td>
           <td><a href="/households/<%=Household.where({:id=>a_piece_of_equipment.home_id}).at(0).id%>"> <%=Household.where({:id=>a_piece_of_equipment.home_id}).at(0).nickname%></td>
           <td><a href="/equipment/<%= a_piece_of_equipment.id %>"><i class="fas fa-ellipsis-h"></i></a></td>
-          <td><a href="/delete_epuipment/<%= a_piece_of_equipment.id %>"><i class="fas fa-trash-alt"></i></a></td>
+          <td><a href="/delete_equipment/<%= a_piece_of_equipment.id %>"><i class="fas fa-trash-alt"></i></a></td>
         </tr>
         <% end %>
       </tbody>
