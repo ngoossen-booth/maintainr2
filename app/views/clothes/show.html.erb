@@ -63,7 +63,7 @@
           Description
         </label>
 
-        <textarea id="description_box" name="query_description" rows="3"></textarea>
+        <textarea id="description_box" name="query_description" rows="3"><%= @the_clothe.description %></textarea>
       </div>
 
 
@@ -82,7 +82,7 @@
           Quantity
         </label>
 
-        <input type="text" id="quantity_box" name="query_quantity">
+        <input type="text" id="quantity_box" name="query_quantity" placeholder="<%= @the_clothe.quantity %>">
       </div>
 
       <button>
